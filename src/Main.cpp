@@ -69,6 +69,7 @@ void mostrarMenuAdministracion(Administracion &administracionMenuAdmin)
     cout << "1. Recaudar administracion \n";
     cout << "2. Asociar propietario-propiedad \n";
     cout << "3. Agregar propiedad \n";
+    cout << "4. Reporte administracion" << endl;
     cout << "-1. Volver\n";
     cin >> opc;
 
@@ -84,6 +85,10 @@ void mostrarMenuAdministracion(Administracion &administracionMenuAdmin)
 
     case 3:
         administracionMenuAdmin.agregarPropiedad();
+        break;
+
+    case 4:
+        administracionMenuAdmin.generarReportePropiedades();
         break;
 
     default:
@@ -119,7 +124,10 @@ void menu(Administracion &administracionMenu)
 
 int main()
 {
-
+    int num = 22;
+    int *p = &num;
+    cout << "Direccion num: " << p << endl;
+    cout << "Valor num: " << *p << endl;
     Administracion administracion; // Instanciado con el stack
     menu(administracion);
     return 0;

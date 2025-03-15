@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Administracion.h"
 
-
 Administracion::Administracion() {
     cout << "Entre al constructor de administracion \n";
     cobroAscensor = 2000;
@@ -18,16 +17,27 @@ Administracion::Administracion() {
  */
 void Administracion::inicializarDatos() {
     Propietario *persona1 = new Propietario();
+    cout << "persona creada exitosamente" << endl;
     Propietario *persona2 = new Propietario();
+    cout << "persona creada exitosamente" << endl;
     Propietario *persona3 = new Propietario();
+    cout << "persona creada exitosamente" << endl;
     Propietario *persona4 = new Propietario();
+    cout << "persona creada exitosamente" << endl;
     Propiedad *prop1 = new Propiedad();
+    cout << "propiedad creada exitosamente" << endl;
     Propiedad *prop2 = new Propiedad();
+    cout << "propiedad creada exitosamente" << endl;
     Propiedad *prop3 = new Propiedad();
+    cout << "propiedad creada exitosamente" << endl;
     Propiedad *prop4 = new Propiedad(); // Automaticamente al constructor x defecto
+    cout << "propiedad creada exitosamente" << endl;
     CuartoUtil *cuarto1 = new CuartoUtil();
+    cout << "cuarto creado exitosamente" << endl;
     CuartoUtil *cuarto2 = new CuartoUtil();
+    cout << "cuarto creado exitosamente" << endl;
     CuartoUtil *cuarto3 = new CuartoUtil();
+    cout << "cuarto creado exitosamente" << endl;
 
     //Inicializar cuartos utiles
     vector<CuartoUtil *> cuartosUtiles;
@@ -306,4 +316,17 @@ void Administracion::imprimirPropietariosCuartoUtil(bool isTerminado) {
             }
         }
     }
+}
+
+void Administracion::generarReportePropiedades(){
+    float total = 0;
+    for (int i = 0; i < propietarios.size(); i++) {
+        cout << "Propietario: " << propietarios[i]->getNombre() << ", ID:   " << propietarios[i]->getIdentificacion() << endl;
+        cout << "   -Propiedad ID: " << propietarios[i]->getPropiedad()->getNumIdentificacion() << ", Piso: " << propietarios[i]->getPropiedad()->getPiso() << ", Area: "<< propietarios[i]->getPropiedad()->getAreaPropiedad() <<endl;
+        cout << "   -Tiene parqueadero: " << propietarios[i]->getPropiedad()->isHayParqueadero() <<endl;
+        cout << "   -Cuarto Util: " << propietarios[i]->getPropiedad()->getCuartoUtil()->isEstaTerminado() <<endl;
+        cout << "-------------------------------" << endl;
+        total+=propietarios[i]->getPropiedad()->calcularRecargo(cobroAscensor, costoBase, recargo);
+    }
+    cout << "Total de administracion recaudada: " << total << endl;
 }
